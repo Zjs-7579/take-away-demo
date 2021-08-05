@@ -1,0 +1,10 @@
+.left,.right{
+    display: block;
+    padding: 4px 0;
+    text-align: center;
+}
+.center{
+    display: block;
+    line-height: 45px;
+    text-align: center;
+}
