@@ -1,6 +1,8 @@
 <template>
   <div class="content">
-    <router-view />
+    <keep-alive>
+      <router-view/>
+    </keep-alive>
   </div>
   <FooterGuide></FooterGuide>
 </template>
@@ -14,7 +16,11 @@
       }
     },
     components: {
-      FooterGuide
+      FooterGuide,
+      // key() {
+      //   return this.$route.path
+      // }
+
     },
     methods: {
       ...mapActions(['get_Address', 'get_Nav', 'get_Shops', 'get_Verify'])

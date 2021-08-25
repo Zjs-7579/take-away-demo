@@ -10,10 +10,10 @@
         </div>
     </div>
     <div class="DiscussBtn">
-        <div @click="all">全部 {{all}}</div>
-        <div @click="good">好评 {{good}}</div>
-        <div @click="middle">中评 {{middle}}</div>
-        <div @click="lame">差评 {{lame}}</div>
+        <div @click="allBtn">全部 {{all.length}}</div>
+        <div @click="goodBtn">好评 {{good.length}}</div>
+        <div @click="middleBtn">中评 {{middle.length}}</div>
+        <div @click="lameBtn">差评 {{lame.length}}</div>
     </div>
     <DiscussList :DataList="list"></DiscussList>
 </template>
@@ -36,11 +36,19 @@
         computed: {
             ...mapState(['discuss'])
         },
-        methods:{
-            // all() {},
-            // good() {},
-            // middle() {},
-            // lame() {}
+        methods: {
+            allBtn() {
+                this.list = this.all;
+            },
+            goodBtn() {
+                this.list = this.good;
+            },
+            middleBtn() {
+                this.list = this.middle;
+            },
+            lameBtn() {
+                this.list = this.lame;
+            }
         },
         components: {
             Scroe,
@@ -49,14 +57,15 @@
         watch: {
             discuss(v) {
                 let data = [];
-                this.good = v.good.length;
-                this.middle = v.middle.length;
-                this.lame = v.lame.length;
-                this.all = this.good + this.middle + this.lame;
+                this.good = v.good;
+                this.middle = v.middle;
+                this.lame = v.lame;
+                //this.all = this.good.length + this.middle.length + this.lame.length;
                 //this.list =data.push(v.good);//v.good, v.middle, v.lame);
                 v.good.forEach( (res) => {data.push(res)});
                 v.middle.forEach( (res) => {data.push(res)});
                 v.lame.forEach( (res) => {data.push(res)});
+                this.all = data;
                 this.list = data;
                 //console.log(data);
 
@@ -91,17 +100,19 @@
         }
     }
     .DiscussBtn{
+        border-top: 0.5px solid #ccc;
         width: 100%;
         height: 50px;
         display: flex;
-        background-color: #17a2b8;
         div{
             width: 20%;
             height: 30px;
             margin: 10px auto;
             text-align: center;
             line-height: 30px;
-            background-color: red;
+            border-radius: 5px;
+            box-shadow: 1px 1px 10px;
+            background-color: #17a2b8;
         }
     }
 </style>

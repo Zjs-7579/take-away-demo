@@ -39,6 +39,7 @@
 
 <style scoped lang="less">
     .footer{
+        box-sizing: border-box;
         background-color: white;
         position: fixed;
         bottom: 0;

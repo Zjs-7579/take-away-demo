@@ -40,7 +40,9 @@
             </router-link>
         </div>
     </div>
-    <router-view/>
+    <keep-alive>
+        <router-view/>
+    </keep-alive>
 </template>
 
 <script>

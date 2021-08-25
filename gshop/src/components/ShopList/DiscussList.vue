@@ -1,4 +1,5 @@
 <template>
+    {{DiscussList}}
     <div class="discussList" v-for="item in DataList" :key="item.id">
         <div class="left">
             <img src="../../assets/icon/yonghu.png" alt="">
